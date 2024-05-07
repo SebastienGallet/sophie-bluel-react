@@ -1,32 +1,53 @@
 import { useEffect, useState } from 'react';
 import Introduction from '../../components/introduction/introduction.jsx';
 import Portfolio from '../../components/portfolio/portfolio.jsx';
-import { getWorks } from '../../services/api.jsx';
+import { getWorks, getCategories } from '../../services/api.jsx';
 import Contact from '../../components/contact/contact.jsx';
+import DeletePicture from '../../components/modales/deletePicture.jsx';
 
-
-function Home() {  
+function Home({ isAdmin }) {  
   const [works, setWorks] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  // Premier useEffect pour récupérer les works
   useEffect(() => {
     getWorks().then(data => {
-      setWorks(data);  // Met à jour le state avec les données récupérées
+      setWorks(data);
+    });
+    getCategories().then(data => {
+      setCategories(data);
     });
   }, []);
 
-  // Second useEffect pour afficher le state après mise à jour
-  useEffect(() => {
-    console.log(works);  // Ceci s'exécute après la mise à jour de works
-  }, [works]);  // Dépendance à `works` pour s'exécuter lorsque `works` change
+  const openDeleteModal = () => {
+    setIsDeleteModalOpen(true);
+  };
 
-  
+  const closeDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+  };
+
+  const refreshPictures = async () => {
+    const updatedWorks = await getWorks();
+    setWorks(updatedWorks);
+  };
 
   return (
     <main>
       <Introduction />
-      <Portfolio works={works} />
+      <Portfolio 
+        works={works} 
+        categories={categories} 
+        isAdmin={isAdmin}
+        onEditClick={openDeleteModal}
+      />
       <Contact />
+      <DeletePicture 
+        isOpen={isDeleteModalOpen} 
+        onClose={closeDeleteModal} 
+        works={works}
+        refreshPictures={refreshPictures}
+      />
     </main>
   );
 }

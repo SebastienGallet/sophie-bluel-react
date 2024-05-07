@@ -186,3 +186,90 @@ footer nav ul {
 	margin: 2em
 }
 
+.admin-banner {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	font-size: 16px;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+
+
+/* Style global pour la modale */
+.deleteModal {
+  position: fixed; /* Position fixée pour rester en place lors du scroll */
+  top: 0;
+  left: 0;
+  width: 100%; /* Largeur complète de la vue */
+  height: 100%; /* Hauteur complète de la vue */
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  background-color: rgba(0, 0, 0, 0.5); /* Arrière-plan semi-transparent */
+  z-index: 1000; /* Assure que la modale est au-dessus des autres éléments */
+}
+
+/* Contenu de la modale */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Largeur adaptative de la modale */
+  max-width: 600px; /* Maximum de largeur pour la modale */
+}
+
+/* Style pour la galerie à l'intérieur de la modale */
+.galleryModale {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Grille responsive */
+  gap: 10px; /* Espacement entre les éléments */
+  margin-bottom: 20px;
+}
+
+.galleryItem {
+  position: relative; /* Nécessaire pour positionner correctement les icônes de suppression */
+}
+
+.galleryItem img {
+  width: 100%; /* Adapte l'image à la taille de son conteneur */
+  height: auto;
+  border-radius: 4px; /* Arrondit les coins de l'image */
+}
+
+/* Icône de poubelle pour supprimer des images */
+.fas.fa-trash-alt {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer; /* Change le curseur pour indiquer l'action */
+  color: red;
+}
+
+/* Boutons dans la modale */
+.deleteModal button {
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007BFF;
+  color: white;
+}
+
+.deleteModal button:hover {
+  background-color: #0056b3;
+}
+
+/* Bouton spécifique pour fermer la modale */
+.deleteModal button:last-child {
+  background-color: transparent;
+  color: black;
+  border: 1px solid #ccc;
+}

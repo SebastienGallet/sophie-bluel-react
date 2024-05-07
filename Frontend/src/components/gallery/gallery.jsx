@@ -1,7 +1,6 @@
 function Gallery({works}) {
     return (
         <div>
-            <h2>Mes Projets</h2>
             <div className="gallery">
                 {works.map(work => (
                     <figure key={work.id}>
