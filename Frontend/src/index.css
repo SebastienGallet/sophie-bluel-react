@@ -1,8 +1,3 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -23,7 +18,6 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -46,7 +40,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/** end reset css**/
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -201,59 +195,57 @@ footer nav ul {
 
 
 
-/* Style global pour la modale */
-.deleteModal {
-  position: fixed; /* Position fixée pour rester en place lors du scroll */
+
+.modal, .deleteModal {
+  position: fixed; 
   top: 0;
   left: 0;
-  width: 100%; /* Largeur complète de la vue */
-  height: 100%; /* Hauteur complète de la vue */
+  width: 100%; 
+  height: 100%; 
   display: flex;
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-  background-color: rgba(0, 0, 0, 0.5); /* Arrière-plan semi-transparent */
-  z-index: 1000; /* Assure que la modale est au-dessus des autres éléments */
+  justify-content: center; 
+  align-items: center; 
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 1000; 
 }
 
-/* Contenu de la modale */
-.modal-content {
+
+.modal-content, .deleteModal .modal-content {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 80%; /* Largeur adaptative de la modale */
-  max-width: 600px; /* Maximum de largeur pour la modale */
+  width: 80%; 
+  max-width: 600px;
 }
 
-/* Style pour la galerie à l'intérieur de la modale */
+
 .galleryModale {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Grille responsive */
-  gap: 10px; /* Espacement entre les éléments */
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
+  gap: 10px; 
   margin-bottom: 20px;
 }
 
 .galleryItem {
-  position: relative; /* Nécessaire pour positionner correctement les icônes de suppression */
+  position: relative; 
 }
 
 .galleryItem img {
-  width: 100%; /* Adapte l'image à la taille de son conteneur */
+  width: 100%; 
   height: auto;
-  border-radius: 4px; /* Arrondit les coins de l'image */
+  border-radius: 4px;
 }
 
-/* Icône de poubelle pour supprimer des images */
 .fas.fa-trash-alt {
   position: absolute;
   top: 10px;
   right: 10px;
-  cursor: pointer; /* Change le curseur pour indiquer l'action */
+  cursor: pointer; 
   color: red;
 }
 
-/* Boutons dans la modale */
-.deleteModal button {
+.modal button, .deleteModal button {
   cursor: pointer;
   margin-right: 10px;
   padding: 8px 16px;
@@ -263,12 +255,11 @@ footer nav ul {
   color: white;
 }
 
-.deleteModal button:hover {
+.modal button:hover, .deleteModal button:hover {
   background-color: #0056b3;
 }
 
-/* Bouton spécifique pour fermer la modale */
-.deleteModal button:last-child {
+.modal button:last-child, .deleteModal button:last-child {
   background-color: transparent;
   color: black;
   border: 1px solid #ccc;

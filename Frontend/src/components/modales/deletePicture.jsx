@@ -1,6 +1,6 @@
 import { deleteWork } from '../../services/api.jsx';
 
-function DeletePicture({ isOpen, onClose, works, refreshPictures }) {
+function DeletePicture({ isOpen, onClose, works, refreshPictures, onAddClick }) {
   const handleDelete = (pictureId) => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -10,8 +10,8 @@ function DeletePicture({ isOpen, onClose, works, refreshPictures }) {
 
     deleteWork(pictureId, token)
       .then(() => {
-        refreshPictures(); // fonction pour rafraîchir la liste des images après suppression
-        onClose(); // fermer la modale
+        refreshPictures();
+        onClose();
       })
       .catch(error => {
         console.error("Failed to delete the picture:", error);
@@ -32,7 +32,7 @@ function DeletePicture({ isOpen, onClose, works, refreshPictures }) {
             </div>
           ))}
         </div>
-        <button>Ajouter une photo</button>
+        <button onClick={onAddClick}>Ajouter une photo</button>
         <button onClick={onClose}>x</button>
       </div>
     </div>

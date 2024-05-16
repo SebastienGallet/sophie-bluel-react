@@ -2,12 +2,12 @@ const API_BASE_URL = 'http://localhost:5678/api';
 
 export function getWorks() {
   return fetch(`${API_BASE_URL}/works`)
-    .then(response => response.json())
+    .then(response => response.json());
 }
 
 export function getCategories() {
   return fetch(`${API_BASE_URL}/categories`)
-    .then(response => response.json())
+    .then(response => response.json());
 }
 
 export const apiLogin = (email, password) => {
@@ -28,11 +28,11 @@ export const apiLogin = (email, password) => {
 
 export const deleteWork = async (id, token) => {
   try {
-    const response = await fetch(`http://localhost:5678/api/works/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/works/${id}`, {
       method: "DELETE",
       headers: {
         'Accept': 'application/json',
-        'Authorization': `Bearer ${token}`, // Assurez-vous que le token est inclus correctement
+        'Authorization': `Bearer ${token}`,
       },
     });
     if (!response.ok) {
@@ -45,8 +45,6 @@ export const deleteWork = async (id, token) => {
   }
 };
 
-
-
 export const postWork = async (formData, token) => {
   try {
     const response = await fetch(`${API_BASE_URL}/works`, {
@@ -58,11 +56,13 @@ export const postWork = async (formData, token) => {
       body: formData,
     });
     if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Failed to post the new work:', errorData);
       throw new Error('Failed to post the new work.');
     }
-    return response.json();  // Retourne la réponse du serveur après l'ajout
+    return response.json();
   } catch (error) {
     console.error('Error posting new work:', error);
-    return null;  // Indique un problème lors de la création
+    return null;
   }
 };
