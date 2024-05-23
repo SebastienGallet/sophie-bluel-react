@@ -19,17 +19,15 @@ function Login() {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
+        <div className="login">
+            <h2>Log in</h2>
             <form onSubmit={handleLogin}>
                 <label htmlFor="email">Email:</label>
                 <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
                 
                 <label htmlFor="password">Password:</label>
                 <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
-                
-                <button type="submit">Login</button>
-                
+                <button type="submit">Se Connecter</button>
                 {error && <div className="error">{error}</div>}
             </form>
         </div>

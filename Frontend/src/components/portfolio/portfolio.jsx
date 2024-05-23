@@ -12,8 +12,8 @@ function Portfolio({ works, categories, isAdmin, onEditClick }) {
     const filteredWorks = selectedCategory === 'all' ? works : works.filter(work => work.categoryId === selectedCategory);
 
     return (
-        <div>
-            <h2>Mes Projets {isAdmin && <button onClick={onEditClick}>Modifier</button>}</h2>
+        <div className="galleryContainer">
+            <h2>Mes Projets {isAdmin && <button onClick={onEditClick} className="adminEdit"><i class="fa-solid fa-pen-to-square"></i>modifier</button>}</h2>
             <Categories categories={categories} onCategoryChange={handleCategoryChange} />
             <Gallery works={filteredWorks} />
         </div>

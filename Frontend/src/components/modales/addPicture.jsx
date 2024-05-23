@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { postWork } from '../../services/api';
 
 function AddPicture({ isOpen, onClose, onBack, categories, refreshPictures }) {
@@ -49,20 +49,36 @@ function AddPicture({ isOpen, onClose, onBack, categories, refreshPictures }) {
   return (
     <div className="modal addPicture">
       <div className="modal-content">
-        <h2>Ajouter une nouvelle photo</h2>
-        {preview && <img src={preview} alt="Preview" />}
+        <div className="navigation">
+          <button type="button" onClick={onBack}><i className="fa-solid fa-arrow-left"></i></button>
+          <button type="button" onClick={onClose}>x</button>
+        </div>
+        <h2>Ajout photo</h2>
+        {preview ? (
+          <div className="file-upload-container">
+            <img src={preview} alt="Preview" className="preview-image"/>
+          </div>
+        ) : (
+          <div className="file-upload-container">
+            <i className="fa-solid fa-image"></i>
+            <div className="styled-upload-button-wrapper">
+              <button type="button" className="styled-upload-button">Ajouter une photo</button>
+              <input type="file" id="file-upload" className="file-upload-input" onChange={handleImageChange} required />
+            </div>
+            <p className="uploadDetails">Taille max: 5Mo</p>
+          </div>
+        )}
         <form onSubmit={handleSubmit}>
-          <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Titre de l'œuvre" required />
-          <input type="file" onChange={handleImageChange} required />
+          <label htmlFor="title">Titre</label>
+          <input type="text" value={title} onChange={e => setTitle(e.target.value)} required />
+          <label htmlFor="category">Catégorie</label>
           <select value={categoryId} onChange={e => setCategoryId(e.target.value)} required>
             <option value="" disabled>Choisir une catégorie</option>
             {categories.map(category => (
               <option key={category.id} value={category.id}>{category.name}</option>
             ))}
           </select>
-          <button type="submit">Ajouter</button>
-          <button type="button" onClick={onBack}>Retour</button>
-          <button type="button" onClick={onClose}>Fermer</button>
+          <button type="submit" className={`submit-button ${title && image && categoryId ? 'active' : ''}`}>Valider</button>
         </form>
       </div>
     </div>

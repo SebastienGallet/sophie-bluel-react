@@ -11,7 +11,6 @@ function Header() {
   }, []);
 
   const handleLogout = () => {
-    // Supprimer le token du localStorage et rafraîchir l'état de connexion
     localStorage.removeItem('token');
     setIsLoggedIn(false);
     window.location.href = '/login';
@@ -24,7 +23,6 @@ function Header() {
         <ul>
           <li><Link to="/">Projets</Link></li>
           <li>Contact</li>
-          {/* Afficher Login ou Logout selon l'état de connexion */}
           <li>
             {isLoggedIn ? (
               <Link to="/" onClick={handleLogout}>Logout</Link>

@@ -23,7 +23,8 @@ function DeletePicture({ isOpen, onClose, works, refreshPictures, onAddClick }) 
   return (
     <div className="deleteModal">
       <div className="modal-content">
-        <h2>Gallerie Photo</h2>
+      <button onClick={onClose} className="close">x</button>
+        <h2>Galerie Photo</h2>
         <div className="galleryModale">
           {works.map((work, index) => (
             <div key={index} className="galleryItem">
@@ -32,8 +33,7 @@ function DeletePicture({ isOpen, onClose, works, refreshPictures, onAddClick }) 
             </div>
           ))}
         </div>
-        <button onClick={onAddClick}>Ajouter une photo</button>
-        <button onClick={onClose}>x</button>
+        <button onClick={onAddClick} className="addPicButton">Ajouter une photo</button>
       </div>
     </div>
   );

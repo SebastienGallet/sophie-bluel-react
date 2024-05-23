@@ -41,6 +41,10 @@ table {
 	border-spacing: 0;
 }
 
+a {
+	text-decoration: none;
+}
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -52,6 +56,11 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
+
+header nav a {
+	color: black;
+}
+
 section {
 	margin: 50px 0
 }
@@ -217,6 +226,8 @@ footer nav ul {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 80%; 
   max-width: 600px;
+	display: flex;
+	flex-direction: column;
 }
 
 
@@ -245,22 +256,230 @@ footer nav ul {
   color: red;
 }
 
-.modal button, .deleteModal button {
-  cursor: pointer;
-  margin-right: 10px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007BFF;
-  color: white;
+.modal-content .close {
+	position: relative;
+	left: 95%;
+	cursor: pointer; 
+	color: black;
+	background-color: white;
+	border: none;
+	font-size: 20px;
+	width: 30px;
 }
 
-.modal button:hover, .deleteModal button:hover {
-  background-color: #0056b3;
+.modal-content h2 {
+	text-align: center; 
+	margin-bottom: 20px;
 }
 
-.modal button:last-child, .deleteModal button:last-child {
-  background-color: transparent;
+.modal-content .galleryItem i {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer; 
+	color: white;
+	background-color: black;
+	padding: 3px;
+}
+
+.modal-content .addPicButton {
+	background-color: #1D6154;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 60px;
+	cursor: pointer; 
+	margin: 0 auto;
+	width: 40%;
+}
+
+
+.categoriesContainer {
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+}
+
+.categoriesContainer button {
+	height: 38px;
+	background-color: white;
+	border: 2px solid #1D6154;
+	border-radius: 60px;
+	font-family: 'Syne';
+	color: #1D6154;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	margin: 0 10px;
+	padding: 0 20px;
+}
+
+.galleryContainer {
+	margin-bottom: 20px;
+}
+
+.galleryContainer h2 {
+	text-align: center;
+}
+
+.login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.login form {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	margin-top: 20px;
+}
+
+.login form label {
+	font-size: 14px;
+	font-weight: 500;
+	margin: 20px 0 10px 0;
+}
+
+.login form input {
+	height: 40px;
+	font-size: 16px;
+	border-radius: 4px;
+	border: 0px solid;
+	padding: 0 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login form button {
+	height: 36px;
+	font-size: 16px;
+	border-radius: 60px;
+	border: 0px solid;
+	padding: 0 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	background-color: #1D6154;
+	color: white;
+	font-family: 'Syne';
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.galleryContainer .adminEdit {
+	background-color: white;
+	border: 0px solid;
+	cursor: pointer;
+}
+
+.galleryContainer .adminEdit i {
+	margin-right: 10px;
+}
+
+.addPicture .modal-content form {
+	display: flex;
+	flex-direction: column;
+}
+
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E8F1F6;
+  height: 169px;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+	margin-bottom: 20px;
+}
+
+.file-upload-container i {
+  font-size: 60px;
+  color: #B9C5CC;
+  margin-bottom: 15px;
+}
+
+.styled-upload-button {
+  font-family: 'Syne';
+  font-weight: 700;
   color: black;
-  border: 1px solid #ccc;
+  background-color: #B9C5CC;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 60px;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.file-upload-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.styled-upload-button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.file-upload-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+
+.addPicture input[type="text"] {
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	border: none;
+	height: 40px;
+	margin-bottom: 20px;
+}
+
+.addPicture select {
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	border: none;
+	height: 40px;
+	margin-bottom: 20px;
+}
+
+.addPicture .navigation {
+	display: flex;
+	justify-content: space-between;
+}
+
+.addPicture .navigation button {
+	border: none;
+	background-color: white;
+	font-size: 20px;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.addPicture .submit-button {
+  background-color: grey;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 60px;
+  cursor: not-allowed;
+}
+
+.addPicture .submit-button.active {
+  background-color: #1D6154;
+  cursor: pointer;
 }
