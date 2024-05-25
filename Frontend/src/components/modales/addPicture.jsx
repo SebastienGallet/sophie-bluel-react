@@ -77,7 +77,18 @@ function AddPicture({ isOpen, onClose, onBack, categories, refreshPictures }) {
         <h2>Ajout photo</h2>
         {preview ? (
           <div className="file-upload-container">
-            <img src={preview} alt="Preview" className="preview-image" />
+            <button
+              onClick={() => document.getElementById("file-upload").click()}
+            >
+              <img src={preview} alt="Preview" className="preview-image" />
+            </button>
+            <input
+              type="file"
+              id="file-upload"
+              className="file-upload-input"
+              onChange={handleImageChange}
+              style={{ display: "none" }}
+            />
           </div>
         ) : (
           <div className="file-upload-container">
